@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenlei.tian.dao.UserMapper">
+    <select id="selectUserByPhone" resultType="com.chenlei.tian.entity.User">
+        select id as id, name as name,type as type, password as password,phone as phone
+         from user where phone = #{phone}
+    </select>
+    <update id="updateUser">
+        update user set name=#{user.name},type=#{user.type},password=#{user.password}
+        where id = #{user.id}
+    </update>
+    <insert id="insertUser" parameterType="com.chenlei.tian.entity.User">
+        insert into user (name,type,password) values (#{user.name},#{user.type},#{user.password})
+    </insert>
+</mapper>

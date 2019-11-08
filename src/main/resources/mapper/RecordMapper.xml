@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenlei.tian.dao.RecordMapper">
+    <select id="getRecordByDate" resultType="com.chenlei.tian.entity.Record">
+        select id as recordId, u_id as userId,
+        tel_visit as telVisit, home_visit as homeVisit,
+        video, make_up as makeUp, talk,time as day,
+        notes
+        from detail where data  = #{data}
+    </select>
+    <insert id="insertIntoRecord" parameterType="com.chenlei.tian.entity.Record">
+        insert into detail (u_id,tel_visit,home_visit,video,make_up,talk,time,notes)
+        values (#{r.userId},#{r.telVisit},#{r.homeVisit},#{r.video},#{r.makeUp},#{r.talk},#{r.day},#{r.notes})
+    </insert>
+</mapper>
